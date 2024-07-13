@@ -1,19 +1,19 @@
 import React from 'react';
 import './HeroSection.css';
-// import phoneImage from '../assets/phone.png'; // Import your image here
+ import hero from '../../assets/hero.png'; // Import your image here
 
 const HeroSection = () => {
   return (
     <section className="hero-section">
       <div className="hero-text">
-        <h1>A Wealth of Experience To Heal And Help You.</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+        <h1>Your Partner in Comprehensive Urine Health Solutions.</h1>
+        <p>Our state-of-the-art services offer unparalleled expertise in urine monitoring, treatment, and preventative care. With years of experience, we are dedicated to ensuring your urinary health through advanced technology and personalized care</p>
         <div className="hero-buttons">
           <button>Start Analysis</button>
         </div>
       </div>
       <div className="hero-image">
-        <img src="https://static.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg" alt="Phone" />
+        <img src={hero} alt="Phone" />
       </div>
     </section>
   );
