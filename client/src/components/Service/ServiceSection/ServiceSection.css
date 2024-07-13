@@ -1,0 +1,32 @@
+.services-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 72px 6rem 0px 6rem;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1200px) {
+    .service-card {
+      flex: 1 1 calc(33.333% - 20px); 
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .services-section {
+          flex-wrap: wrap;
+    }
+    .service-card {
+        flex: 1 1 calc(50% - 20px); 
+      }
+  }
+  @media (max-width: 768px) {
+    .service-card {
+        flex: 1 1 calc(100%); 
+    }
+    .services-section {
+        padding: 20px;
+    }
+  }
+  
+  
