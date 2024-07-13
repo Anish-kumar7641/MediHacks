@@ -24,9 +24,6 @@ python imageProcessing.py
 ```
 
 
-### Hosted Website Link
-https://alemeno-assignment-eight.vercel.app/
-
 ***First request will take time because of cold start of free-tier backend server.***
 
 
@@ -54,7 +51,7 @@ https://alemeno-assignment-eight.vercel.app/
 ## Tech Stack
 
 - **Frontend**: React
-- **Backend**: Django
+- **Backend**: Node.js
 - **Image Processing**: OpenCV
 - **Styling**: CSS
 - **Version Control**: Git
@@ -74,12 +71,12 @@ https://alemeno-assignment-eight.vercel.app/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Anand930singh/Alemeno_assignment.git
+   git clone 
    ```
 
 2. Navigate to backend directory:
   ```bash
-    cd backend_alemeno
+    cd backend_MediHacks
   ```
 
 3. Install the required packages:
@@ -87,11 +84,6 @@ https://alemeno-assignment-eight.vercel.app/
     pip install -r requirements.txt
   ```
 
-4. Run the Django server:
-  ```bash
-    python manage.py migrate
-    python manage.py runserver
-  ```
 
 
 
@@ -99,7 +91,7 @@ https://alemeno-assignment-eight.vercel.app/
 
 1. Navigate to frontend directory:
   ```bash
-    cd ../frontend_alemeno
+    cd ../frontend_MediHacks
   ```
 
 2. Install the required packages:
@@ -131,5 +123,5 @@ Open your web browser and navigate to http://localhost:3000 to access the applic
 **Response:** JSON object with the RGB values.
 
 ### Code Structure
-![image](https://github.com/Anand930singh/Alemeno_assignment/assets/99159646/3609bc02-cc01-4a3b-a1a1-d00b04e27048)
+
 
