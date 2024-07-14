@@ -37,15 +37,15 @@ transform: scale(1.1);
 }
 
 .rightBody {
-  position: relative;
-  flex: 50%;
-  height: 100%; 
-  margin: 1rem 1rem 1rem 1.5rem;
-  border-radius: 25px;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  background-color: whitesmoke;
+    position: relative;
+    flex: 50%;
+    height: 100%; 
+    margin: 1rem 1rem 1rem 1.5rem;
+    border-radius: 25px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: whitesmoke;
 }
 .imgContain{
   position: relative;
@@ -82,6 +82,23 @@ transform: scale(1.1);
   border-radius: 3px;
   font-size: 12px;
   pointer-events: none;
+}
+.suggestion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0rem;
+    align-items: center;
+}
+.paraHeading{
+    margin: 2rem 20px;
+    font-size: 28px;
+    font-weight: bolder;
+    color: green;
+}
+.leftBody-1{
+    padding: 0rem 4rem;
+    font-size: 18px;
 }
 @media screen and (max-width: 782px) {
   .bodyContain{
@@ -172,5 +189,28 @@ box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
     font-size: 1rem;
     color: rgb(141, 141, 141);
   }
-  
+
+.chatIcon{
+  position:absolute;
+  right:3rem;
+  bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:3.5rem;
+  width:3.5rem;  
+}
+
+.chatIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chatBox{
+  position: absolute;
+  bottom:5rem;
+  right:5rem;
+}
+
   

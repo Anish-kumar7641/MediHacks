@@ -8,7 +8,7 @@ import pathlib
 import textwrap
 import json
 import google.generativeai as genai
-
+from flask_cors import CORS
 from IPython.display import display
 from IPython.display import Markdown
 from dotenv import load_dotenv
@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['ENV'] = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=app.config['ENV'])
@@ -260,6 +261,7 @@ def process_prompt_chat():
     # Extract the `prompt` dictionary from JSON data
     
     prompt_data = request.json['prompt']
+    prompt_data=json.dumps(prompt_data)
     prompt_data+="give responses in one or two sentence"
     response = gemniModel(prompt_data)
     # Return the response as JSON

@@ -22,7 +22,6 @@ app.post('/upload',upload.single('image'), (req, res) => {
   }
 
   const imageBuffer = req.file;
-  console.log('hii',imageBuffer)
   processImage(imageBuffer)
     .then((result) => {
       res.json({ success: true, data: result });
