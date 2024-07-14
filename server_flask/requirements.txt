@@ -1,0 +1,6 @@
+Flask==2.2.5
+Pillow==9.4.0
+numpy==1.24.2
+scikit-learn==1.2.2
+opencv-python-headless==4.7.0.72
+gunicorn==20.1.0
