@@ -261,6 +261,7 @@ def process_prompt_chat():
     # Extract the `prompt` dictionary from JSON data
     
     prompt_data = request.json['prompt']
+    prompt_data=json.dumps(prompt_data)
     prompt_data+="give responses in one or two sentence"
     response = gemniModel(prompt_data)
     # Return the response as JSON
