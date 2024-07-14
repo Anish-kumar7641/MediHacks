@@ -6,7 +6,7 @@ import os
 import cv2
 import pathlib
 import textwrap
-
+import json
 import google.generativeai as genai
 
 from IPython.display import display
@@ -39,16 +39,11 @@ def to_markdown(text):
 
 def gemniModel(prompt):
     model = genai.GenerativeModel('gemini-1.5-flash')
-    parts = []
-    for key, value in prompt.items():
-        part_text = f"{key}: {value}"  # Adjust this based on your actual content format
-        part = {'text': part_text}
-        parts.append(part)
-    print(parts)
 
+    
     additional_prompt = "This is urine strip data. According to this, please provide suggestions on what to avoid and how to take precautions."
 
-    response = model.generate_content(parts)
+    response = model.generate_content(json.dumps(prompt))
     return response.text
 
 
