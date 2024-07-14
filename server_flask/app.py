@@ -241,10 +241,27 @@ def process_prompt():
     for component, value in zip(components, prompt_data):
         prompt += f"{component}: {value['value']}\n"
 
-    prompt += "\nBased on the above results, give in general precaution so any people can folow for keep themself healthy. Give five precaution and cures. And this thing used by doctor only any patient is not going to access it. And exlude this type of answer"
+    prompt += "\nBased on the above results, give in general precaution so any people can folow for keep themself healthy. Give five precaution and cures. "
+    
 
     response = gemniModel(prompt)
     
+    final_response=gemniModel(prompt)
+    # Return the response as JSON
+    return jsonify({'final_response': final_response})
+
+
+@app.route('/chat', methods=['POST'])
+def process_prompt_chat():
+    # Check if request contains JSON data
+    if not request.json or 'prompt' not in request.json:
+        return jsonify({'error': 'Invalid JSON format or missing `prompt` key'}), 400
+    
+    # Extract the `prompt` dictionary from JSON data
+    
+    prompt_data = request.json['prompt']
+    prompt_data+="give responses in one or two sentence"
+    response = gemniModel(prompt_data)
     # Return the response as JSON
     return jsonify({'response': response})
 
