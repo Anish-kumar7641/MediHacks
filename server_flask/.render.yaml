@@ -1,0 +1,6 @@
+services:
+- type: web
+  name: urine-strip-analyzer
+  env: python
+  buildCommand: ""
+  startCommand: "python app.py"
