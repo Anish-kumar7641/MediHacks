@@ -22,7 +22,7 @@ const ChatBox = () => {
       timestamp: new Date().toLocaleTimeString()
     };
     setMessages((prevMessages) => [...prevMessages, newMessage]);
-    callApi(newMessage.text);
+    callApi(newMessage);
     setInput('');
   };
 
