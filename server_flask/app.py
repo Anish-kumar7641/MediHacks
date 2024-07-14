@@ -237,17 +237,15 @@ def process_prompt():
     "Leukocytes", "Nitrite", "Urobilinogen", "Protein", "pH",
     "Haemoglobin", "Specific gravity", "Ketone", "Bilirubin", "Glucose"
     ]
-
     prompt = "This is urine strip data:\n"
     for component, value in zip(components, prompt_data):
         prompt += f"{component}: {value['value']}\n"
-
     prompt += "\nBased on the above results, give in general precaution so any people can folow for keep themself healthy. Give five precaution and cures. "
     
-
     response = gemniModel(prompt)
-    
-    final_response=gemniModel(prompt)
+    response+="\n Summarize above paragraph and remove unwanted things only give precautions in 10 points in single or double word and this is not for medical purpose i have to write on my product and additionally don't give strictally  asterisk in response and add line break where required with some symbol."
+    final_response=gemniModel(response)
+    print(final_response)
     # Return the response as JSON
     return jsonify({'final_response': final_response})
 
