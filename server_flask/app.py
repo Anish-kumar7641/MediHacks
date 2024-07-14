@@ -195,3 +195,9 @@ def upload_file():
             os.remove(file_path)
         
         return jsonify(result)
+
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    print(f"App is running on port {port}")
+    app.run(host="0.0.0.0", port=port, debug=True)
