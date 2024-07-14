@@ -1,7 +1,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  /* padding: 20px; */
   background-color: #2dc5c3;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -42,10 +41,27 @@
 }
 
 /* .nav-open {
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #36ba98;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+} */
+
+.nav-open:hover {
+  scale: 1.1;
+}
+
+.nav-open a {
+  text-decoration: none;
+}
+
+/* Button Hover Effect */
+.button-hover {
   display: inline-block;
   padding: 0.75rem 1.25rem;
   border-radius: 10rem;
-  color: #fff;
+  color: #2a8c6c;
   text-transform: uppercase;
   font-size: 1rem;
   letter-spacing: 0.15rem;
@@ -53,51 +69,39 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0cf;
-    border-radius: 10rem;
-    z-index: -2;
-  }
-  &:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: darken(#0cf, 15%);
-    transition: all 0.3s;
-    border-radius: 10rem;
-    z-index: -1;
-  }
-  &:hover {
-    color: #fff;
-    &:before {
-      width: 100%;
-    }
-  }
-} */
-
-.nav-open {
-  padding: 8px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #36ba98;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-.nav-open:hover {
-  scale: 1.1;
 }
 
-.nav-open a {
-  text-decoration: none;
-  color: white;
+.button-hover:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10rem;
+  z-index: -2;
+}
+
+.button-hover:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #2a8c6c;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+
+.button-hover:hover {
+  color: #fff;
+}
+
+.button-hover:hover:before {
+  width: 100%;
 }
 
 /* Responsive Header */
@@ -105,6 +109,7 @@
   .header {
     padding: 20px;
   }
+
   .nav {
     position: absolute;
     top: 0;
