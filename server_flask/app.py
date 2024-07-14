@@ -48,7 +48,7 @@ def gemniModel(prompt):
 
     additional_prompt = "This is urine strip data. According to this, please provide suggestions on what to avoid and how to take precautions."
 
-    response = model.generate_content(parts + [{'text': additional_prompt}])
+    response = model.generate_content(parts)
     return response.text
 
 
@@ -136,7 +136,7 @@ def computerVisionPreprocessing(image_path):
 
     #   print(reversed_list)
       
-      output={}
+      output=[]
       for i in range(1,11):
           temp=""
           temp_rgb=[]
@@ -150,13 +150,9 @@ def computerVisionPreprocessing(image_path):
                   mini=sum
                   temp_rgb=data[i][cat]
                   temp=cat
-          output[temp] = temp_rgb
-    #   return output
-      transformed_output = []
-      for key, value in output.items():
-              transformed_output.append({"value": key, "color": f"rgb({', '.join(map(str, value))})"})
-    
-      return transformed_output
+        #   output[temp] = temp_rgb
+          output.append({"value":temp,"color":f"rgb({', '.join(map(str, temp_rgb))})"})
+      return output
 
 def extract_dominant_colors(file_path, num_colors=10):
     # Open the image file
@@ -197,15 +193,8 @@ def extract_dominant_colors(file_path, num_colors=10):
                 mini = sum
                 temp_rgb = data[i][cat]
                 temp = cat
-        output[temp] = temp_rgb
-        
-
-    # return output
-    transformed_output = []
-    for key, value in output.items():
-        transformed_output.append({"value": key, "color": f"rgb({', '.join(map(str, value))})"})
-    
-    return transformed_output
+        output.append({"value":temp,"color":f"rgb({', '.join(map(str, temp_rgb))})"})
+    return output
     
 
 @app.route('/upload', methods=['POST'])
