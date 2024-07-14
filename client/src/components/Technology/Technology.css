@@ -4,10 +4,10 @@
   }
   
   .tech-heading {
-    font-size: 2em;
+    font-size: 32px;
     margin-bottom: 36px;
-    color: #2dc5c3;
-    font-weight: bolder;
+    font-weight: 800;
+
   }
   
   .tech-tools {

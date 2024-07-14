@@ -44,6 +44,7 @@
     border-radius: 4px;
     cursor: pointer;
     background-color: #36BA98;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   .nav-open:hover{
     scale: 1.1;

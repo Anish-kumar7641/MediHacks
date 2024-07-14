@@ -1,4 +1,5 @@
 import './App.css';
+import AboutStrip from './components/AboutStrip/AboutStrip';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import HeroSection from './components/HeroSection/HeroSection';
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <Header />
       <HeroSection />
+      <AboutStrip/>
       <ServicesSection/>
       <Technology/>
       <Footer/>
