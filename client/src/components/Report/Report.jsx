@@ -36,7 +36,7 @@ const ColorBox = styled.div`
 
 const Heading = styled.h2`
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 6rem;
 `;
 
 const TableRow = ({ row,result }) => {
@@ -80,10 +80,10 @@ const TableRow = ({ row,result }) => {
 };
 
 const Report = (responseResult) => {
-    console.log("kjk",responseResult,responseResult.responseResult[0])
   return (
-    <Container className="cnt-report">
+    <>
       <Heading>Urine Test Results</Heading>
+    <Container className="cnt-report">
       <Table>
         <thead>
           <tr>
@@ -106,6 +106,7 @@ const Report = (responseResult) => {
         </tbody>
       </Table>
     </Container>
+    </>
   );
 };
 
