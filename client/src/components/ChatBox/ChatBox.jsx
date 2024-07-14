@@ -46,10 +46,11 @@ const ChatBox = () => {
       if (response.ok) {
         const data = await response.json();
         const apiMessage = {
-          text: data.message,
+          text: data.response,
           isPersonal: false,
           timestamp: new Date().toLocaleTimeString()
         };
+        console.log(data.message)
         setMessages((prevMessages) => [...prevMessages, apiMessage]);
       } else {
         console.error("Error:", response.statusText);

@@ -36,7 +36,7 @@ const HeroSection = () => {
           src="https://lottie.host/2e689f2b-27b6-4232-b0d5-cf4a80a863db/ckZyQmMK1A.json"
           background="transparent"
           speed={1}
-          style={{ width: '300px', height: '300px' }}
+          style={{ width: '400px', height: '400px' }}
           loop
           autoplay
         />

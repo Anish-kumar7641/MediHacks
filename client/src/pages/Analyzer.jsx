@@ -41,7 +41,6 @@ const Analyzer = () => {
       if (response.ok) {
         const data = await response.json();
         setResponseResult(data);
-        const dat = ReportData(data);
       } else {
         console.error("Error:", response.statusText);
       }
@@ -53,11 +52,8 @@ const Analyzer = () => {
   };
 
   const fetchPara = async () => {
-    console.log("1");
     setLoading1(true)
     if (responseResult) {
-      console.log("2");
-
       try {
         const response = await fetch(
           "https://medihacks-1.onrender.com/gemini",
@@ -70,7 +66,7 @@ const Analyzer = () => {
           }
         );
         const result = await response.json();
-        setParaData(result.response);
+        setParaData(result.final_response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -141,7 +137,7 @@ const Analyzer = () => {
       </div>
       {chatOpen&&<div className="chatBox">
         <ChatBox/>
-      </div>}
+      </div>} 
     </>
   );
 };

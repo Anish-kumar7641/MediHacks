@@ -11,6 +11,7 @@
 .strip-sub-heading{
     color: gray;
     margin-bottom: 3rem;
+    font-size: 20px;
 }
 .strip-sub-heading span{
   color: #3FA2F6;
