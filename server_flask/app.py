@@ -195,7 +195,3 @@ def upload_file():
             os.remove(file_path)
         
         return jsonify(result)
-
-if __name__ == "__main__":
-    print("App is running on port 5000")
-    app.run(port=5000)
