@@ -4,7 +4,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+    /* row-gap: 2rem; */
     padding-top: 6rem;
 }
 .bodyContain {
@@ -39,12 +39,12 @@
 .rightBody {
     position: relative;
     flex: 50%;
-    height: 100%; /* Match the height of bodyContain */
+    height: 100%; 
     margin: 1rem 1rem 1rem 1.5rem;
     border-radius: 25px;
-    display: flex; /* Use flexbox to center the image */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     background-color: whitesmoke;
 }
 .imgContain{
@@ -83,6 +83,23 @@
     font-size: 12px;
     pointer-events: none;
 }
+.suggestion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0rem;
+    align-items: center;
+}
+.paraHeading{
+    margin: 2rem 20px;
+    font-size: 28px;
+    font-weight: bolder;
+    color: green;
+}
+.leftBody-1{
+    padding: 0rem 4rem;
+    font-size: 18px;
+}
 @media screen and (max-width: 782px) {
   .bodyContain{
     flex-direction: column;
@@ -98,6 +115,10 @@
   }
   .rightBody img {
     max-width: 30%;
+}
+.leftBody-1{
+   margin-bottom: 2rem;
+   width: 94%;
 }
 }
 
