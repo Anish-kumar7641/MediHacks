@@ -151,8 +151,12 @@ def computerVisionPreprocessing(image_path):
                   temp_rgb=data[i][cat]
                   temp=cat
           output[temp] = temp_rgb
-
-      return output
+    #   return output
+      transformed_output = []
+      for key, value in output.items():
+              transformed_output.append({"value": key, "color": f"rgb({', '.join(map(str, value))})"})
+    
+      return transformed_output
 
 def extract_dominant_colors(file_path, num_colors=10):
     # Open the image file
@@ -179,7 +183,7 @@ def extract_dominant_colors(file_path, num_colors=10):
     for color in colors:
         results.append(color.tolist())
     
-    output = {}
+    output = []
 
     for i in range(1, 11):
         temp = ""
@@ -194,6 +198,7 @@ def extract_dominant_colors(file_path, num_colors=10):
                 temp_rgb = data[i][cat]
                 temp = cat
         output[temp] = temp_rgb
+        
 
     return output
 
