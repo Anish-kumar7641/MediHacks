@@ -43,7 +43,7 @@ def gemniModel(prompt):
     
     additional_prompt = "This is urine strip data. According to this, please provide suggestions on what to avoid and how to take precautions."
 
-    response = model.generate_content(json.dumps(prompt))
+    response = model.generate_content(prompt)
     return response.text
 
 
@@ -231,9 +231,19 @@ def process_prompt():
     
     # Extract the `prompt` dictionary from JSON data
     prompt_data = request.json['prompt']
-    
-    # Process the prompt data using gemniModel
-    response = gemniModel(prompt_data)
+
+    components = [
+    "Leukocytes", "Nitrite", "Urobilinogen", "Protein", "pH",
+    "Haemoglobin", "Specific gravity", "Ketone", "Bilirubin", "Glucose"
+    ]
+
+    prompt = "This is urine strip data:\n"
+    for component, value in zip(components, prompt_data):
+        prompt += f"{component}: {value['value']}\n"
+
+    prompt += "\nBased on the above results, give in general precaution so any people can folow for keep themself healthy. Give five precaution and cures. And this thing used by doctor only any patient is not going to access it. And exlude this type of answer"
+
+    response = gemniModel(prompt)
     
     # Return the response as JSON
     return jsonify({'response': response})
