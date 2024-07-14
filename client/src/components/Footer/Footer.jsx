@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-section">
           <h2>UrineVital</h2>
           <p>
-            When Stan Britten established BritKare in 1995, he did so with a true desire to assist the medical community with the quality care of their desire.
+          UrineVital was founded with a mission to provide comprehensive and innovative urine health solutions. Our dedicated team is committed to advancing urinary health through cutting-edge technology and personalized care, ensuring optimal wellness for all our clients.
           </p>
         </div>
         {/* <div className="footer-section">
@@ -24,10 +24,10 @@ const Footer = () => {
         <div className="footer-section">
           <h3>CONTACT</h3>
           <ul>
-            <li><i className="fas fa-map-marker-alt"></i> 777, Seventh Avenue, India, NE 5849</li>
-            <li><i className="fas fa-phone"></i> +788-698-758</li>
-            <li><i className="fas fa-fax"></i> +788-698-758</li>
-            <li><i className="fas fa-envelope"></i> urinevital@gmail.com</li>
+            <li><i className="fas fa-map-marker-alt"></i>580009,ittigati road,sattur colony,IIIT-DHARWAD</li>
+            <li><i className="fas fa-phone"></i> +91-7644091103</li>
+            <li><i className="fas fa-fax"></i> +91-8797668608</li>
+            <li><i className="fas fa-envelope"></i>avinav04kashyap@gmail.com</li>
           </ul>
           <div className="social-media">
             <a href="#"><i className="fab fa-google-plus-g"></i></a>

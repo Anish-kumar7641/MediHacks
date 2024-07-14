@@ -1,6 +1,11 @@
 import "./ServiceSection.css";
 
 // Replace these with actual paths to your icons
+import icon1 from '../../../assets/services1.jpg';
+import icon2 from '../../../assets/services2.jpg';
+import icon3 from '../../../assets/services3.jpg';
+import icon4 from '../../../assets/services4.jpg';
+import ServiceCard from '../ServiceCard/ServiceCard';
 import icon1 from "../../../assets/icon.png";
 import icon2 from "../../../assets/icon.png";
 import icon3 from "../../../assets/icon.png";
