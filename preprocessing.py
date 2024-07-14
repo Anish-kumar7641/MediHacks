@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 from sklearn.cluster import KMeans
+import sys
+import json
 
 data={
   1: {
@@ -238,9 +240,13 @@ def extract_dominant_colors(file_path, num_colors=10):
     return output
 
 # Example usage
-file_path = 'images\image5.jpg'
+# file_path = 'images\image5.jpg'
 
-dominant_colors = preprocessing(file_path)
-print(dominant_colors)
+# dominant_colors = preprocessing(file_path)
+# print(dominant_colors)
+if __name__ == "__main__":
+    image_path = sys.argv[1]
+    result = preprocessing(image_path)
+    print(json.dumps(result))
 
 
