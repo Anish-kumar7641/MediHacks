@@ -48,7 +48,7 @@ def gemniModel(prompt):
 
     additional_prompt = "This is urine strip data. According to this, please provide suggestions on what to avoid and how to take precautions."
 
-    response = model.generate_content(parts + [{'text': additional_prompt}])
+    response = model.generate_content(parts)
     return response.text
 
 
