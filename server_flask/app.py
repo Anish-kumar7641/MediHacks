@@ -8,7 +8,7 @@ import pathlib
 import textwrap
 import json
 import google.generativeai as genai
-
+from flask_cors import CORS
 from IPython.display import display
 from IPython.display import Markdown
 from dotenv import load_dotenv
@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['ENV'] = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=app.config['ENV'])
@@ -43,7 +44,7 @@ def gemniModel(prompt):
     
     additional_prompt = "This is urine strip data. According to this, please provide suggestions on what to avoid and how to take precautions."
 
-    response = model.generate_content(json.dumps(prompt))
+    response = model.generate_content(prompt)
     return response.text
 
 
@@ -231,10 +232,38 @@ def process_prompt():
     
     # Extract the `prompt` dictionary from JSON data
     prompt_data = request.json['prompt']
+
+    components = [
+    "Leukocytes", "Nitrite", "Urobilinogen", "Protein", "pH",
+    "Haemoglobin", "Specific gravity", "Ketone", "Bilirubin", "Glucose"
+    ]
+
+    prompt = "This is urine strip data:\n"
+    for component, value in zip(components, prompt_data):
+        prompt += f"{component}: {value['value']}\n"
+
+    prompt += "\nBased on the above results, give in general precaution so any people can folow for keep themself healthy. Give five precaution and cures. "
     
-    # Process the prompt data using gemniModel
+
+    response = gemniModel(prompt)
+    
+    final_response=gemniModel(prompt)
+    # Return the response as JSON
+    return jsonify({'final_response': final_response})
+
+
+@app.route('/chat', methods=['POST'])
+def process_prompt_chat():
+    # Check if request contains JSON data
+    if not request.json or 'prompt' not in request.json:
+        return jsonify({'error': 'Invalid JSON format or missing `prompt` key'}), 400
+    
+    # Extract the `prompt` dictionary from JSON data
+    
+    prompt_data = request.json['prompt']
+    prompt_data=json.dumps(prompt_data)
+    prompt_data+="give responses in one or two sentence"
     response = gemniModel(prompt_data)
-    
     # Return the response as JSON
     return jsonify({'response': response})
 

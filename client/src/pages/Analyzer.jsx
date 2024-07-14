@@ -4,7 +4,10 @@ import Download from "../assets/download.png";
 import "react-json-view-lite/dist/index.css";
 import Header from "../components/Header/Header";
 import Report from "../components/Report/Report";
+import Chat from "../assets/chat.png"
+import Delete from "../assets/Delete.png"
 import { ReportData } from "../assets/data/ReportData";
+import ChatBox from "../components/ChatBox/ChatBox";
 
 const Analyzer = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -12,9 +15,10 @@ const Analyzer = () => {
   const [paraData, setParaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [loading1, setLoading1] = useState(false);
+  const [chatOpen, setChatOpen]= useState(false)
 
   const handleImageUpload = (e) => {
-    const file = e.target.files[0]; // Assumin
+    const file = e.target.files[0];
     setSelectedImage(file);
   };
 
@@ -132,6 +136,12 @@ const Analyzer = () => {
           </div>
         )}
       </div>
+      <div className="chatIcon" onClick={()=>setChatOpen(!chatOpen)}>
+            {!chatOpen?(<img src={Chat} alt="chat"/>):(<img src={Delete} alt="cross"/>)}
+      </div>
+      {chatOpen&&<div className="chatBox">
+        <ChatBox/>
+      </div>}
     </>
   );
 };
