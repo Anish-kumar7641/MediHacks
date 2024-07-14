@@ -22,7 +22,7 @@ const ChatBox = () => {
       timestamp: new Date().toLocaleTimeString()
     };
     setMessages((prevMessages) => [...prevMessages, newMessage]);
-    callApi(newMessage.text);
+    callApi(newMessage);
     setInput('');
   };
 
@@ -46,7 +46,7 @@ const ChatBox = () => {
       if (response.ok) {
         const data = await response.json();
         const apiMessage = {
-          text: data.message,
+          text: data.response,
           isPersonal: false,
           timestamp: new Date().toLocaleTimeString()
         };
