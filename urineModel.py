@@ -9,6 +9,7 @@ image = cv2.imread(image_path)
 image = cv2.imread(image_path)
 image_gray = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
+
 # Check if the image was loaded properly
 if image is None or image_gray is None:
     print("Error: Could not load image.")
