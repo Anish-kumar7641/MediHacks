@@ -4,9 +4,21 @@ import numpy as np
 from sklearn.cluster import KMeans
 import os
 import cv2
+import pathlib
+import textwrap
 
+import google.generativeai as genai
+
+from IPython.display import display
+from IPython.display import Markdown
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
+
+app.config['ENV'] = os.getenv('GOOGLE_API_KEY')
+genai.configure(api_key=app.config['ENV'])
 
 data = {
     1: {"neg": [224, 231, 180], "trace": [218, 213, 184], "small": [191, 184, 165], "mod": [152, 118, 145], "large": [137, 100, 144]},
@@ -20,6 +32,26 @@ data = {
     9: {"neg": [245, 230, 163], "small+": [242, 215, 162], "mod++": [201, 193, 154], "large+++": [198, 174, 150]},
     10: {"neg": [111, 199, 175], "1_10_ir_100": [110, 191, 133], "1_4_250": [94, 174, 89], "1_2_500": [139, 145, 75], "1_1_1000": [131, 118, 66], "2_2000+": [129, 84, 53]}
 }
+
+def to_markdown(text):
+  text = text.replace('•', '  *')
+  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
+
+def gemniModel(prompt):
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    parts = []
+    for key, value in prompt.items():
+        part_text = f"{key}: {value}"  # Adjust this based on your actual content format
+        part = {'text': part_text}
+        parts.append(part)
+    print(parts)
+
+    additional_prompt = "This is urine strip data. According to this, please provide suggestions on what to avoid and how to take precautions."
+
+    response = model.generate_content(parts + [{'text': additional_prompt}])
+    return response.text
+
+
 
 def computerVisionPreprocessing(image_path):
   print('Execution Computer Vision Technique')
@@ -195,6 +227,21 @@ def upload_file():
             os.remove(file_path)
         
         return jsonify(result)
+
+@app.route('/gemini', methods=['POST'])
+def process_prompt():
+    # Check if request contains JSON data
+    if not request.json or 'prompt' not in request.json:
+        return jsonify({'error': 'Invalid JSON format or missing `prompt` key'}), 400
+    
+    # Extract the `prompt` dictionary from JSON data
+    prompt_data = request.json['prompt']
+    
+    # Process the prompt data using gemniModel
+    response = gemniModel(prompt_data)
+    
+    # Return the response as JSON
+    return jsonify({'response': response})
 
 if __name__ == "__main__":
     import os
