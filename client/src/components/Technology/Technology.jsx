@@ -27,7 +27,7 @@ const Technology = () => {
 
   return (
     <div className="technology-used">
-      <div className="tech-heading">Technology Used</div>
+      <div className="tech-heading">TECHNOLOGY USED</div>
       <div className="tech-tools">
         {techData.map((data) => (
           <img src={data.image} className="tech-tool" key={data.id} alt={`tech-${data.id}`} />
