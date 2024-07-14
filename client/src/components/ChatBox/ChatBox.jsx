@@ -40,13 +40,13 @@ const ChatBox = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message })
+        body: JSON.stringify({ "prompt":message })
       });
 
       if (response.ok) {
         const data = await response.json();
         const apiMessage = {
-          text: data.message, // Adjust this based on your API response structure
+          text: data.message,
           isPersonal: false,
           timestamp: new Date().toLocaleTimeString()
         };
