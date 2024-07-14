@@ -200,7 +200,13 @@ def extract_dominant_colors(file_path, num_colors=10):
         output[temp] = temp_rgb
         
 
-    return output
+    # return output
+    transformed_output = []
+    for key, value in output.items():
+        transformed_output.append({"value": key, "color": f"rgb({', '.join(map(str, value))})"})
+    
+    return transformed_output
+    
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
