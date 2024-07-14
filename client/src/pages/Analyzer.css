@@ -83,25 +83,22 @@
     font-size: 12px;
     pointer-events: none;
 }
-.jsonViewer{
-    border-radius: 26px;
-    overflow: hidden;
-    position: relative;
-    /* width:90%; */
-    margin: 1rem;
-}
 @media screen and (max-width: 782px) {
   .bodyContain{
     flex-direction: column;
-    height: 30rem;
+    height: 100%;
     padding: 0rem 20px;
-  }
-  .container{
-    /* row-gap: 19rem; */
+    width: 100%;
   }
   .leftBody,.rightBody{
-    padding:0;
+    padding:1rem;
   }
+  .rightBody{
+    margin-bottom:2rem;
+  }
+  .rightBody img {
+    max-width: 30%;
+}
 }
 
 /* body.css */
@@ -179,5 +176,6 @@
     font-size: 1rem;
     color: rgb(141, 141, 141);
   }
+
   
   
