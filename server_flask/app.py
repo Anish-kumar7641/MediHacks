@@ -4,9 +4,21 @@ import numpy as np
 from sklearn.cluster import KMeans
 import os
 import cv2
+import pathlib
+import textwrap
+import json
+import google.generativeai as genai
 
+from IPython.display import display
+from IPython.display import Markdown
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
+
+app.config['ENV'] = os.getenv('GOOGLE_API_KEY')
+genai.configure(api_key=app.config['ENV'])
 
 data = {
     1: {"neg": [224, 231, 180], "trace": [218, 213, 184], "small": [191, 184, 165], "mod": [152, 118, 145], "large": [137, 100, 144]},
@@ -20,6 +32,21 @@ data = {
     9: {"neg": [245, 230, 163], "small+": [242, 215, 162], "mod++": [201, 193, 154], "large+++": [198, 174, 150]},
     10: {"neg": [111, 199, 175], "1_10_ir_100": [110, 191, 133], "1_4_250": [94, 174, 89], "1_2_500": [139, 145, 75], "1_1_1000": [131, 118, 66], "2_2000+": [129, 84, 53]}
 }
+
+def to_markdown(text):
+  text = text.replace('•', '  *')
+  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
+
+def gemniModel(prompt):
+    model = genai.GenerativeModel('gemini-1.5-flash')
+
+    
+    additional_prompt = "This is urine strip data. According to this, please provide suggestions on what to avoid and how to take precautions."
+
+    response = model.generate_content(json.dumps(prompt))
+    return response.text
+
+
 
 def computerVisionPreprocessing(image_path):
   print('Execution Computer Vision Technique')
@@ -104,7 +131,7 @@ def computerVisionPreprocessing(image_path):
 
     #   print(reversed_list)
       
-      output={}
+      output=[]
       for i in range(1,11):
           temp=""
           temp_rgb=[]
@@ -118,8 +145,8 @@ def computerVisionPreprocessing(image_path):
                   mini=sum
                   temp_rgb=data[i][cat]
                   temp=cat
-          output[temp] = temp_rgb
-
+        #   output[temp] = temp_rgb
+          output.append({"value":temp,"color":f"rgb({', '.join(map(str, temp_rgb))})"})
       return output
 
 def extract_dominant_colors(file_path, num_colors=10):
@@ -147,7 +174,7 @@ def extract_dominant_colors(file_path, num_colors=10):
     for color in colors:
         results.append(color.tolist())
     
-    output = {}
+    output = []
 
     for i in range(1, 11):
         temp = ""
@@ -161,9 +188,9 @@ def extract_dominant_colors(file_path, num_colors=10):
                 mini = sum
                 temp_rgb = data[i][cat]
                 temp = cat
-        output[temp] = temp_rgb
-
+        output.append({"value":temp,"color":f"rgb({', '.join(map(str, temp_rgb))})"})
     return output
+    
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -196,6 +223,23 @@ def upload_file():
         
         return jsonify(result)
 
+@app.route('/gemini', methods=['POST'])
+def process_prompt():
+    # Check if request contains JSON data
+    if not request.json or 'prompt' not in request.json:
+        return jsonify({'error': 'Invalid JSON format or missing `prompt` key'}), 400
+    
+    # Extract the `prompt` dictionary from JSON data
+    prompt_data = request.json['prompt']
+    
+    # Process the prompt data using gemniModel
+    response = gemniModel(prompt_data)
+    
+    # Return the response as JSON
+    return jsonify({'response': response})
+
 if __name__ == "__main__":
-    print("App is running on port 5000")
-    app.run(port=5000)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    print(f"App is running on port {port}")
+    app.run(host="0.0.0.0", port=port, debug=True)
