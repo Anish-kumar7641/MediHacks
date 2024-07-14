@@ -1,7 +1,7 @@
 .strip-wrapper {
   padding: 72px 6rem 0px 6rem;
   text-align: center;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .strip-heading{
     margin-bottom: 1rem;
@@ -13,7 +13,7 @@
     margin-bottom: 3rem;
 }
 .strip-sub-heading span{
-  color: #000;
+  color: #3FA2F6;
   font-weight: 700;
 }
 .strip-section {

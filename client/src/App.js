@@ -1,21 +1,15 @@
-import './App.css';
-import AboutStrip from './components/AboutStrip/AboutStrip';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import HeroSection from './components/HeroSection/HeroSection';
-import ServicesSection from './components/Service/ServiceSection/ServiceSection';
-import Technology from './components/Technology/Technology';
+import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Analyzer from './pages/Analyzer';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <HeroSection />
-      <AboutStrip/>
-      <ServicesSection/>
-      <Technology/>
-      <Footer/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/analyzer' element={<Analyzer/>}/>
+      </Routes>
+    </Router>
   );
 }
 
