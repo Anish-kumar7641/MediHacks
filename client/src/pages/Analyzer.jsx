@@ -4,15 +4,21 @@ import Download from "../assets/download.png";
 import "react-json-view-lite/dist/index.css";
 import Header from "../components/Header/Header";
 import Report from "../components/Report/Report";
+import Chat from "../assets/chat.png"
+import Delete from "../assets/Delete.png"
 import { ReportData } from "../assets/data/ReportData";
+import ChatBox from "../components/ChatBox/ChatBox";
 
 const Analyzer = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [responseResult, setResponseResult] = useState(null);
+  const [paraData, setParaData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [loading1, setLoading1] = useState(false);
+  const [chatOpen, setChatOpen]= useState(false)
 
   const handleImageUpload = (e) => {
-    const file = e.target.files[0]; // Assumin
+    const file = e.target.files[0];
     setSelectedImage(file);
   };
 
@@ -34,9 +40,7 @@ const Analyzer = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data)
         setResponseResult(data);
-        const dat =ReportData(data);
       } else {
         console.error("Error:", response.statusText);
       }
@@ -45,6 +49,29 @@ const Analyzer = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const fetchPara = async () => {
+    setLoading1(true)
+    if (responseResult) {
+      try {
+        const response = await fetch(
+          "https://medihacks-1.onrender.com/gemini",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prompt: responseResult }),
+          }
+        );
+        const result = await response.json();
+        setParaData(result.final_response);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    setLoading1(false)
   };
 
   return (
@@ -91,8 +118,26 @@ const Analyzer = () => {
             </div>
           </div>
         </div>
-        {responseResult && <Report responseResult={responseResult}/>}
+        {responseResult && <Report responseResult={responseResult} />}
+
+        { responseResult && !paraData&&<div className="suggestion">
+          <button className="button-3" onClick={fetchPara} disabled={loading}>
+            {loading1 ? <div className="loader"></div> : "Get Some Suggestion"}
+          </button>
+        </div>}
+        {paraData && (
+          <div className="leftBody leftBody-1">
+            <div className="paraHeading">Precaution and Cure</div>
+            <p>{paraData}</p>
+          </div>
+        )}
       </div>
+      <div className="chatIcon" onClick={()=>setChatOpen(!chatOpen)}>
+            {!chatOpen?(<img src={Chat} alt="chat"/>):(<img src={Delete} alt="cross"/>)}
+      </div>
+      {chatOpen&&<div className="chatBox">
+        <ChatBox/>
+      </div>} 
     </>
   );
 };

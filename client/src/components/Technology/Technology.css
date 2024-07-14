@@ -1,62 +1,62 @@
 .technology-used {
-    text-align: center;
-    padding: 40px 6rem;
-  }
-  
-  .tech-heading {
-    font-size: 32px;
-    margin-bottom: 36px;
-    font-weight: 800;
+  text-align: center;
+  padding: 40px 6rem 80px 6rem;
+}
 
+.tech-heading {
+  font-size: 32px;
+  margin-bottom: 4rem;
+  font-weight: 800;
+}
+
+.tech-tools {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.tech-tool {
+  width: 144px;
+  height: 144px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.tech-tool:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Keyframes for the fadeInUp animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .tech-tools {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .technology-used {
+    text-align: center;
+    padding: 20px;
+  }
+
   .tech-tool {
-    width: 100px;
-    height: 100px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    animation: fadeInUp 0.5s ease-in-out;
+    width: 80px;
+    height: 80px;
   }
-  
-  .tech-tool:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+  .tech-tool {
+    width: 60px;
+    height: 60px;
   }
-  
-  /* Keyframes for the fadeInUp animation */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .technology-used {
-        text-align: center;
-        padding: 20px;
-      }
-    .tech-tool {
-      width: 80px;
-      height: 80px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .tech-tool {
-      width: 60px;
-      height: 60px;
-    }
-  }
-  
+}
