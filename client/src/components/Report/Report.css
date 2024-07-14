@@ -19,7 +19,7 @@
 }
 @media (max-width: 1024px) {
     .cnt-report{
-        padding: 20px;
+        padding: 20px 10px;
         margin-bottom: 10rem;
     }
     .stages{
@@ -27,11 +27,10 @@
     }
     .stage{
         flex-direction: row;
-        /* width: 6rem; */
         width: 100%;
     }
     .clBox{
-        width: auto;
+        width: 20px;
     }
     
 }

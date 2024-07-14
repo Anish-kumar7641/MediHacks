@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import "./Analyzer.css";
 import Download from "../assets/download.png";
-import { JsonView, allExpanded, darkStyles } from "react-json-view-lite";
 import "react-json-view-lite/dist/index.css";
 import Header from "../components/Header/Header";
 import Report from "../components/Report/Report";
+import { ReportData } from "../assets/data/ReportData";
 
 const Analyzer = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [responseData, setResponseData] = useState(null);
+  const [responseResult, setResponseResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Function to handle file selection
   const handleImageUpload = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]; // Assumin
     setSelectedImage(file);
   };
 
@@ -23,29 +22,28 @@ const Analyzer = () => {
       return;
     }
 
-    setLoading(true); // Set loading to true before making the request
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("image", selectedImage);
     try {
-      const response = await fetch(
-        "https://alemeno-assignment-qd7t.onrender.com/urineStrip/",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch("https://medihacks-1.onrender.com/upload", {
+        method: "POST",
+        body: formData,
+      });
 
       if (response.ok) {
         const data = await response.json();
-        setResponseData(data);
+        console.log(data)
+        setResponseResult(data);
+        const dat =ReportData(data);
       } else {
         console.error("Error:", response.statusText);
       }
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      setLoading(false); // Set loading to false after the request completes
+      setLoading(false);
     }
   };
 
@@ -75,28 +73,13 @@ const Analyzer = () => {
             {selectedImage && (
               <div className="selectedImageName">{selectedImage.name}</div>
             )}
-            <div className="buttons">
-              <button className="blob-btn" onClick={handleSubmit} disabled={loading}>
-                {loading ? <div className="loader"></div> : "SUBMIT"}
-                <span className="blob-btn__inner">
-                  <span className="blob-btn__blobs">
-                    <span className="blob-btn__blob"></span>
-                    <span className="blob-btn__blob"></span>
-                    <span className="blob-btn__blob"></span>
-                    <span className="blob-btn__blob"></span>
-                  </span>
-                </span>
-              </button>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-              <defs>
-                <filter id="goo">
-                  <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
-                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
-                  <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
-                </filter>
-              </defs>
-            </svg>
+            <button
+              className="button-3"
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              {loading ? <div className="loader"></div> : "Submit"}
+            </button>
           </div>
           <div className="rightBody">
             <div className="imgContain">
@@ -105,33 +88,10 @@ const Analyzer = () => {
               ) : (
                 <div className="selectImageText">Select Image for Report</div>
               )}
-              {responseData &&
-                responseData.rgb_positions &&
-                responseData.rgb_positions.map((position, index) => (
-                  <div
-                    key={index}
-                    className="rgbText"
-                    style={{
-                      top: `${position.coordinates[1] / 3.6}px`,
-                      left: `${position.coordinates[0] / 2.1}px`,
-                    }}
-                  >
-                    {`RGB: (${position.rgb.join(", ")})`}
-                  </div>
-                ))}
             </div>
           </div>
         </div>
-        <div className="jsonViewer">
-          {responseData && responseData.contour_labels && (
-            <JsonView
-              data={responseData.contour_labels}
-              shouldExpandNode={allExpanded}
-              style={darkStyles}
-            />
-          )}
-        </div>
-      <Report />
+        {responseResult && <Report responseResult={responseResult}/>}
       </div>
     </>
   );
