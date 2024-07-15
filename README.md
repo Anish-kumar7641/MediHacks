@@ -5,6 +5,8 @@ Revolutionizing home urinalysis with AI-driven, real-time test strip analysis an
 
 ## UrineVital
 
+$${\color{red}Note: For first time request(analysis) may take time because of cold start in free tier hosting}$$
+
 Check out the live version of [UrineVital](https://medi-hacks-dusky.vercel.app/).
 
 The backend for this project is available at [UrineVital Backend](https://medihacks-1.onrender.com/gemini).
@@ -139,7 +141,34 @@ Open your web browser and navigate to http://localhost:3000 to access the applic
 3. View the report of the Urine analysis.
 
 ### API Endpoints
-`POST /upload/`
+
+```http
+  POST /upload
+```
+
+| Parameter | Type     | Description                           |
+| :-------- | :------- | :------------------------------------ |
+| `image`   | `file`   | **Required**. Image file(urine strip) |
+
+
+
+```http
+  POST /gemini
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `prompt`   | `[]`   | **Required**. Report      |
+
+
+```http
+  POST /chat
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `prompt`   | `string`   | **Required**. pass message     |
+
 
 **Description:** Upload an image of the urine strip and receive the  result of the 10 colors pads along with RGB.
 
