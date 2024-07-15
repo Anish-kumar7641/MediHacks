@@ -5,7 +5,7 @@ Revolutionizing home urinalysis with AI-driven, real-time test strip analysis an
 
 ## UrineVital
 
-$${\color{red}Note: For first time request(analysis) may take time because of cold start in free tier hosting}$$
+$${\color{red}Note:- For -first- time- request(analysis)- may- take- time- because- of- cold- start- in- free- tier- hosting}$$
 
 Check out the live version of [UrineVital](https://medi-hacks-dusky.vercel.app/).
 
@@ -35,9 +35,6 @@ To run openCV code use (change the path of image)
 ```bash
 python imageProcessing.py
 ```
-
-
-***First request will take time because of cold start of free-tier backend server.***
 
 
 ## Table of Contents
@@ -179,4 +176,8 @@ Open your web browser and navigate to http://localhost:3000 to access the applic
 ### Code Structure
 <img width="107" alt="image" src="https://github.com/user-attachments/assets/8b115d36-0a34-45b9-bed1-a8a5fb2f2fc6">
 
-
+### Developers (Team)
+@VishalKumar369 
+@Anish-kumar7641
+@Anand930singh
+@Avinav-kashyap
