@@ -33,9 +33,9 @@ body {
 .chat {
   position: absolute;
   /* transform: translate(-50%, -50%); */
-  width: 300px;
+  width: 320px;
   height: 80vh;
-  max-height: 500px;
+  max-height: 400px;
   z-index: 2;
   overflow: hidden;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
@@ -92,9 +92,27 @@ body {
 .messages {
   flex: 1 1 auto;
   color: rgba(255, 255, 255, 0.5);
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.messages::-webkit-scrollbar {
+  width: 5px; /* Adjust the width to make the scrollbar smaller */
+}
+
+.messages::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* Adjust the track color */
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3); /* Adjust the thumb color */
+  border-radius: 10px; /* Optional: Add rounded corners to the thumb */
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5); /* Adjust the thumb color on hover */
 }
 .messages .messages-content {
   position: absolute;
@@ -102,6 +120,7 @@ body {
   left: 0;
   height: 101%;
   width: 100%;
+  padding-right: 0.5rem;
 }
 .messages .message {
   clear: both;
