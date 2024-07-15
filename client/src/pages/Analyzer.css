@@ -191,7 +191,7 @@ box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
   }
 
 .chatIcon{
-  position:absolute;
+  position:fixed;
   right:3rem;
   bottom: 3rem;
   display: flex;
@@ -209,7 +209,7 @@ box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 
 .chatBox{
-  position: absolute;
+  position: fixed;
   bottom:5rem;
   right:5rem;
 }
