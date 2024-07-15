@@ -199,6 +199,7 @@ box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
   justify-content: center;
   height:3.5rem;
   width:3.5rem;  
+  cursor: pointer;
 }
 
 .chatIcon img {

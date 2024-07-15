@@ -15,7 +15,7 @@ const Analyzer = () => {
   const [paraData, setParaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [loading1, setLoading1] = useState(false);
-  const [chatOpen, setChatOpen]= useState(false)
+  const [chatOpen, setChatOpen] = useState(false)
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -120,7 +120,7 @@ const Analyzer = () => {
         </div>
         {responseResult && <Report responseResult={responseResult} />}
 
-        { responseResult && !paraData&&<div className="suggestion">
+        {responseResult && !paraData && <div className="suggestion">
           <button className="button-3" onClick={fetchPara} disabled={loading}>
             {loading1 ? <div className="loader"></div> : "Get Some Suggestion"}
           </button>
@@ -128,16 +128,18 @@ const Analyzer = () => {
         {paraData && (
           <div className="leftBody leftBody-1">
             <div className="paraHeading">Precaution and Cure</div>
-            <p>{paraData}</p>
+            {paraData.split('\n').map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
           </div>
         )}
       </div>
-      <div className="chatIcon" onClick={()=>setChatOpen(!chatOpen)}>
-            {!chatOpen?(<img src={Chat} alt="chat"/>):(<img src={Delete} alt="cross"/>)}
+      <div className="chatIcon" onClick={() => setChatOpen(!chatOpen)}>
+        {!chatOpen ? (<img src={Chat} alt="chat" />) : (<img src={Delete} alt="cross" />)}
       </div>
-      {chatOpen&&<div className="chatBox">
-        <ChatBox/>
-      </div>} 
+      {chatOpen && <div className="chatBox">
+        <ChatBox />
+      </div>}
     </>
   );
 };

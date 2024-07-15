@@ -1,6 +1,7 @@
 import React from 'react';
 import './HeroSection.css';
 import { DotLottiePlayer } from '@dotlottie/react-player';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -9,17 +10,19 @@ const HeroSection = () => {
         <h1>Your Partner in Comprehensive Urine Health Solutions.</h1>
         <p>Our state-of-the-art services offer unparalleled expertise in urine monitoring, treatment, and preventative care. With years of experience, we are dedicated to ensuring your urinary health through advanced technology and personalized care.</p>
         <div className="hero-buttons">
-          <button className="blob-btn">
-            Start Analysis
-            <span className="blob-btn__inner">
-              <span className="blob-btn__blobs">
-                <span className="blob-btn__blob"></span>
-                <span className="blob-btn__blob"></span>
-                <span className="blob-btn__blob"></span>
-                <span className="blob-btn__blob"></span>
+          <Link to="/analyzer" className='btn'>
+            <button className="blob-btn">
+              Start Analysis
+              <span className="blob-btn__inner">
+                <span className="blob-btn__blobs">
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                </span>
               </span>
-            </span>
-          </button>
+            </button>
+          </Link>
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0">
             <defs>
               <filter id="goo">

@@ -18,6 +18,7 @@
     "react-snap-carousel": "^0.4.0",
     "react-spring": "^9.7.3",
     "sass": "^1.77.8",
+    "scss": "^0.2.4",
     "styled-components": "^6.1.11",
     "web-vitals": "^2.1.4"
   },
