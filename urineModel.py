@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the image in both color and grayscale
-image_path = "C:/Users/HP/Desktop/MediHacks/images/image1.jpg"
+image_path = "C:/Users/HP/Desktop/MediHacks/images/image5.jpg"
 image = cv2.imread(image_path)
 image = cv2.imread(image_path)
 image_gray = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)

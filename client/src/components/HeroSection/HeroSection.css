@@ -39,7 +39,6 @@
   margin-bottom: 30px;
   text-align: center;
   text-transform: uppercase;
-  color: #2dc5c3;
   font-size: 16px;
   font-weight: bold;
   background-color: transparent;
@@ -48,6 +47,11 @@
   transition: color 0.5s;
   cursor: pointer;
   border-radius: 30px;
+  color: #2dc5c3;
+}
+
+.blob-btn .btn{
+  text-decoration: none;
 }
 
 .blob-btn:before {
