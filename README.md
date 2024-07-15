@@ -64,6 +64,10 @@ python imageProcessing.py
   <img width="949" alt="image" src="https://github.com/user-attachments/assets/2fb86273-49ec-4db8-9254-c5b6267fbb76">
   ![image](https://github.com/user-attachments/assets/b06b5b3e-e457-4523-808c-c904020e9f64)
 
+- Integrated with chat bot
+<img width="946" alt="image" src="https://github.com/user-attachments/assets/c49ba192-c6c8-45db-898b-88655589c0ab">
+
+
 
 
 ## Tech Stack
