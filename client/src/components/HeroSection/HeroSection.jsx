@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
+     
     <section className="hero-section">
       <div className="hero-text">
         <h1>Your Partner in Comprehensive Urine Health Solutions.</h1>
